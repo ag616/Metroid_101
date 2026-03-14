@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://biecl5jemyys1"]
+
+[ext_resource type="Script" uid="uid://bhxsatxh8x382" path="res://scenes/entities/drone_enemy.gd" id="1_pd3l4"]
+[ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_ydfy7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydfy7"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pd3l4"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nj8q5"]
+radius = 81.00617
+
+[node name="DroneEnemy" type="CharacterBody2D" unique_id=1867518062]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_pd3l4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409094885]
+texture = ExtResource("1_ydfy7")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=905737107]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_ydfy7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=637392531]
+position = Vector2(-6, -4)
+shape = SubResource("CircleShape2D_pd3l4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1596699093]
+position = Vector2(7, -4)
+shape = SubResource("CircleShape2D_pd3l4")
+
+[node name="AgroRange" type="Area2D" parent="." unique_id=1511262569]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRange" unique_id=1872890391]
+shape = SubResource("CircleShape2D_nj8q5")
+
+[connection signal="body_entered" from="AgroRange" to="." method="_on_agro_range_body_entered"]
