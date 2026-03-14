@@ -26,7 +26,7 @@ func _on_player_shoot_signal(pos: Vector2, dir: Vector2) -> void:
 
 func buff_player():
 	$PowerUpTimer.start()
-	$Entities/Player.speed = 150
+	$Entities/Player.speed = 160
 	$Entities/Player/ReloadTimer.wait_time = 0.15
 	$Entities/Player.is_power_up_on = true #set the flag to true
 
