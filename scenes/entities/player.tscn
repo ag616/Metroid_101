@@ -125,7 +125,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=273311972]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 21
 script = ExtResource("1_ucweq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810030537]
@@ -143,7 +143,7 @@ zoom = Vector2(4, 4)
 limit_left = -87
 limit_top = -143
 limit_right = 1830
-limit_bottom = 337
+limit_bottom = 375
 position_smoothing_speed = 1.0
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=1879600951]
