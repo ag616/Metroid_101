@@ -4,10 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_ydfy7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydfy7"]
-radius = 5.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_pd3l4"]
-radius = 3.0
+radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pd3l4"]
 size = Vector2(284, 114)
@@ -16,7 +13,7 @@ size = Vector2(284, 114)
 collision_layer = 4
 collision_mask = 11
 motion_mode = 1
-wall_min_slide_angle = 0.31066862
+wall_min_slide_angle = 0.0
 script = ExtResource("1_pd3l4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409094885]
@@ -26,14 +23,6 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=905737107]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_ydfy7")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=637392531]
-position = Vector2(-6, -4)
-shape = SubResource("CircleShape2D_pd3l4")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1596699093]
-position = Vector2(7, -4)
-shape = SubResource("CircleShape2D_pd3l4")
 
 [node name="AgroRange" type="Area2D" parent="." unique_id=1511262569]
 collision_layer = 0
