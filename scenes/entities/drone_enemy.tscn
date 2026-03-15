@@ -34,6 +34,8 @@ position = Vector2(7, -4)
 shape = SubResource("CircleShape2D_pd3l4")
 
 [node name="AgroRange" type="Area2D" parent="." unique_id=1511262569]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRange" unique_id=1872890391]
 shape = SubResource("CircleShape2D_nj8q5")
