@@ -10,11 +10,13 @@ radius = 5.0
 radius = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pd3l4"]
-size = Vector2(402, 114)
+size = Vector2(284, 114)
 
 [node name="DroneEnemy" type="CharacterBody2D" unique_id=1867518062]
 collision_layer = 4
 collision_mask = 11
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_pd3l4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409094885]
@@ -40,5 +42,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRange" unique_id=1872890391]
 shape = SubResource("RectangleShape2D_pd3l4")
 
+[node name="NavRefreshTimer" type="Timer" parent="." unique_id=801071593]
+wait_time = 0.5
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1405818873]
+debug_enabled = true
+
 [connection signal="body_entered" from="AgroRange" to="." method="_on_agro_range_body_entered"]
 [connection signal="body_exited" from="AgroRange" to="." method="_on_agro_range_body_exited"]
+[connection signal="timeout" from="NavRefreshTimer" to="." method="_on_nav_refresh_timer_timeout"]
