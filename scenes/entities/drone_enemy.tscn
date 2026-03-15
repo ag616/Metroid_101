@@ -9,8 +9,8 @@ radius = 5.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_pd3l4"]
 radius = 3.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nj8q5"]
-radius = 81.00617
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pd3l4"]
+size = Vector2(402, 114)
 
 [node name="DroneEnemy" type="CharacterBody2D" unique_id=1867518062]
 collision_layer = 4
@@ -38,6 +38,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRange" unique_id=1872890391]
-shape = SubResource("CircleShape2D_nj8q5")
+shape = SubResource("RectangleShape2D_pd3l4")
 
 [connection signal="body_entered" from="AgroRange" to="." method="_on_agro_range_body_entered"]
+[connection signal="body_exited" from="AgroRange" to="." method="_on_agro_range_body_exited"]
