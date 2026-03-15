@@ -6155,6 +6155,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4" unique_id=1763555018]
+visible = false
 position = Vector2(858.5, 31)
 shape = SubResource("RectangleShape2D_d4w6o")
 
