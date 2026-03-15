@@ -16,7 +16,7 @@ size = Vector2(284, 114)
 collision_layer = 4
 collision_mask = 11
 motion_mode = 1
-wall_min_slide_angle = 0.0
+wall_min_slide_angle = 0.31066862
 script = ExtResource("1_pd3l4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409094885]
