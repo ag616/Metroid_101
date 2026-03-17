@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://biecl5jemyys1"]
+
+[ext_resource type="Script" uid="uid://bhxsatxh8x382" path="res://scenes/entities/drone_enemy.gd" id="1_pd3l4"]
+[ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_ydfy7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydfy7"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pd3l4"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nj8q5"]
+radius = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pd3l4"]
+size = Vector2(284, 114)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_siyni"]
+radius = 47.423622
+
+[node name="DroneEnemy" type="CharacterBody2D" unique_id=1867518062]
+collision_layer = 4
+collision_mask = 11
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_pd3l4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409094885]
+texture = ExtResource("1_ydfy7")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=905737107]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_ydfy7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=874779592]
+position = Vector2(-3, -2)
+shape = SubResource("CircleShape2D_pd3l4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1243746565]
+position = Vector2(3, -2)
+shape = SubResource("CircleShape2D_nj8q5")
+
+[node name="AgroRange" type="Area2D" parent="." unique_id=1511262569]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRange" unique_id=1872890391]
+shape = SubResource("RectangleShape2D_pd3l4")
+
+[node name="NavRefreshTimer" type="Timer" parent="." unique_id=801071593]
+wait_time = 0.5
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1405818873]
+debug_enabled = true
+
+[node name="IdlePatrolRange" type="Area2D" parent="." unique_id=1831328836]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IdlePatrolRange" unique_id=366893195]
+shape = SubResource("CircleShape2D_siyni")
+
+[node name="PatrolMarkers" type="Node2D" parent="." unique_id=116546613]
+
+[node name="Marker2D" type="Marker2D" parent="PatrolMarkers" unique_id=1872639855]
+position = Vector2(-25, -24)
+
+[node name="Marker2D2" type="Marker2D" parent="PatrolMarkers" unique_id=1420241953]
+position = Vector2(30, 11)
+
+[node name="Marker2D3" type="Marker2D" parent="PatrolMarkers" unique_id=683115529]
+position = Vector2(-12, 20)
+
+[node name="Marker2D4" type="Marker2D" parent="PatrolMarkers" unique_id=1563911805]
+position = Vector2(25, -20)
+
+[connection signal="body_entered" from="AgroRange" to="." method="_on_agro_range_body_entered"]
+[connection signal="body_exited" from="AgroRange" to="." method="_on_agro_range_body_exited"]
+[connection signal="timeout" from="NavRefreshTimer" to="." method="_on_nav_refresh_timer_timeout"]
