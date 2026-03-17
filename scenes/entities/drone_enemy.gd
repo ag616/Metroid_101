@@ -20,9 +20,20 @@ func _physics_process(_delta: float) -> void:
 	if mark_enemy:
 		#drone_dir = (target.global_position - global_position).normalized() #get the PV 
 		drone_dir = to_local(nav_agent.get_next_path_position()).normalized()
+	else:
+		idle_patrol()
+		if nav_agent.distance_to_target() <= 50:
+			drone_dir = to_local(nav_agent.get_next_path_position()).normalized()
+		else: 
+			drone_dir = Vector2.ZERO
 	velocity = drone_dir*drone_speed
 	move_and_slide()
 	
 func _on_nav_refresh_timer_timeout() -> void:
 	if mark_enemy:
 		nav_agent.target_position = target.global_position
+
+func idle_patrol():
+	var patrol_point = $PatrolMarkers.get_children().pick_random() as Marker2D
+	if !mark_enemy and nav_agent.is_navigation_finished():
+		nav_agent.target_position = patrol_point.global_position
