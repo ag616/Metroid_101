@@ -4,6 +4,7 @@ var drone_speed:int = 50 #speed of the drone
 var mark_enemy:bool = false #flag to see if the enemy is marked
 var target: CharacterBody2D = null #make a variable for characterbody2d object - THIS ALWAYS CREATES A REFERENCE
 var patrol_positions: Array[Vector2] =[]
+var chasing_distance: float = 200 #this is the chasing distance
 
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -31,7 +32,7 @@ func _on_agro_range_body_exited(_body: Node2D) -> void:
 
 func _physics_process(_delta: float) -> void:
 	#need to move towards player
-	if mark_enemy:
+	if mark_enemy and (nav_agent.get_path_length() <= chasing_distance):
 		#drone_dir = (target.global_position - global_position).normalized() #get the PV 
 		drone_dir = to_local(nav_agent.get_next_path_position()).normalized()
 	else:
