@@ -27,7 +27,7 @@ func _on_agro_range_body_entered(body: Node2D) -> void:
 
 func _on_agro_range_body_exited(_body: Node2D) -> void:
 	mark_enemy = false
-	drone_dir = Vector2.ZERO
+	nav_agent.target_position = patrol_positions.pick_random()
 	
 
 func _physics_process(_delta: float) -> void:
@@ -38,6 +38,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		idle_patrol()
 		drone_dir = to_local(nav_agent.get_next_path_position()).normalized()
+		
 	velocity = drone_dir*drone_speed
 	move_and_slide()
 	

@@ -6543,6 +6543,9 @@ position = Vector2(428, -35)
 [node name="Player" parent="Entities" unique_id=273311972 instance=ExtResource("1_377w7")]
 position = Vector2(108, -31)
 
+[node name="DroneEnemy2" parent="Entities" unique_id=1453859080 instance=ExtResource("5_d4w6o")]
+position = Vector2(148, 105)
+
 [node name="Bullets" type="Node2D" parent="." unique_id=39748964]
 
 [node name="PowerUpTimer" type="Timer" parent="." unique_id=709359784]
