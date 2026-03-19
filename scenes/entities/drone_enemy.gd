@@ -58,10 +58,12 @@ func _physics_process(_delta: float) -> void:
 
 func animate_explosion():
 	$Sprite2D.visible = false 
-	var explosion_scene_inst: = explosion_scene.instantiate() as Sprite2D
-	explosion_scene_inst.setup($Sprite2D.position)
-	$".".add_child(explosion_scene_inst)
-	queue_free()
+	#var explosion_scene_inst: = explosion_scene.instantiate() as Sprite2D
+	#explosion_scene_inst.setup($Sprite2D.position)
+	#$".".add_child(explosion_scene_inst)
+	#queue_free()
+	$animated_explosion.visible = true
+	$animated_explosion.play("explosion_animation")
 	#var tween = get_tree().create_tween()
 	#tween.tween_property(explosion_scene_inst,"frame",7,5).from(0)
 
@@ -76,3 +78,7 @@ func idle_patrol():
 	var patrol_point:Vector2 = patrol_positions.pick_random()
 	if !mark_enemy and nav_agent.is_navigation_finished():
 		nav_agent.target_position = patrol_point
+
+
+func _on_animated_explosion_animation_finished() -> void:
+	queue_free()
