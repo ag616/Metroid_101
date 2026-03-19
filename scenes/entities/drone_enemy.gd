@@ -7,6 +7,7 @@ var patrol_positions: Array[Vector2] =[]
 var chasing_distance: float = 200 #this is the chasing distance
 var idle_speed: int = 25 #speed of drone while idling
 var drone_speed: int = 0 #speed of the drone
+var explosion_scene: PackedScene = preload("res://scenes/entities/explosion.tscn")
 
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -15,6 +16,7 @@ func _ready() -> void:
 	for marker in $PatrolMarkers.get_children():
 		if marker is Marker2D:
 			patrol_positions.append(marker.global_position) #update marker positions
+	
 
 func update_marker_positions():
 	var i =0
@@ -44,10 +46,27 @@ func _physics_process(_delta: float) -> void:
 	else:
 		idle_patrol()
 		drone_dir = to_local(nav_agent.get_next_path_position()).normalized()
+	
+	if target!=null:
+		if (position-target.position).length() <= 15.0:
+			print("going to collide")
+			animate_explosion()
+			#Need to display explosion animation
 		
 	velocity = drone_dir*drone_speed
 	move_and_slide()
+
+func animate_explosion():
+	$Sprite2D.visible = false 
+	var explosion_scene_inst: = explosion_scene.instantiate() as Sprite2D
+	explosion_scene_inst.setup($Sprite2D.position)
+	$".".add_child(explosion_scene_inst)
+	queue_free()
+	#var tween = get_tree().create_tween()
+	#tween.tween_property(explosion_scene_inst,"frame",7,5).from(0)
+
 	
+
 func _on_nav_refresh_timer_timeout() -> void:
 	if mark_enemy:
 		nav_agent.target_position = target.global_position

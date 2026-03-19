@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhxsatxh8x382" path="res://scenes/entities/drone_enemy.gd" id="1_pd3l4"]
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_ydfy7"]
+[ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_nj8q5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydfy7"]
 radius = 4.0
@@ -17,6 +18,75 @@ size = Vector2(260, 100)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_siyni"]
 radius = 47.423622
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj8q5"]
+atlas = ExtResource("3_nj8q5")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siyni"]
+atlas = ExtResource("3_nj8q5")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g80xw"]
+atlas = ExtResource("3_nj8q5")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xv5n"]
+atlas = ExtResource("3_nj8q5")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyjj0"]
+atlas = ExtResource("3_nj8q5")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3is7"]
+atlas = ExtResource("3_nj8q5")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgj4j"]
+atlas = ExtResource("3_nj8q5")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be47n"]
+atlas = ExtResource("3_nj8q5")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4jqo"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj8q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siyni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g80xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xv5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyjj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3is7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgj4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be47n")
+}],
+"loop": true,
+"name": &"explosion_animation",
+"speed": 8.0
+}]
 
 [node name="DroneEnemy" type="CharacterBody2D" unique_id=1867518062]
 collision_layer = 4
@@ -75,6 +145,12 @@ position = Vector2(-12, 20)
 
 [node name="Marker2D4" type="Marker2D" parent="PatrolMarkers" unique_id=1563911805]
 position = Vector2(25, -20)
+
+[node name="animated_explosion" type="AnimatedSprite2D" parent="." unique_id=1229822258]
+sprite_frames = SubResource("SpriteFrames_d4jqo")
+animation = &"explosion_animation"
+frame = 4
+frame_progress = 0.20806755
 
 [connection signal="body_entered" from="AgroRange" to="." method="_on_agro_range_body_entered"]
 [connection signal="body_exited" from="AgroRange" to="." method="_on_agro_range_body_exited"]
