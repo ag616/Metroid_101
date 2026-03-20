@@ -151,6 +151,12 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_d4jqo")
 animation = &"explosion_animation"
 
+[node name="DebugLabel" type="Label" parent="." unique_id=1117731317]
+offset_left = -18.0
+offset_top = -31.0
+offset_right = 22.0
+offset_bottom = -8.0
+
 [connection signal="body_entered" from="AgroRange" to="." method="_on_agro_range_body_entered"]
 [connection signal="body_exited" from="AgroRange" to="." method="_on_agro_range_body_exited"]
 [connection signal="timeout" from="NavRefreshTimer" to="." method="_on_nav_refresh_timer_timeout"]

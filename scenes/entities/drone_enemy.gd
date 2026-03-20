@@ -39,6 +39,11 @@ func _on_agro_range_body_exited(_body: Node2D) -> void:
 
 func _physics_process(_delta: float) -> void:
 	#need to move towards player
+	#$DebugLabel.text = "Done:%s\n Hit target:%s \n Target reachable:%s" % [
+		#nav_agent.is_navigation_finished(),
+		#nav_agent.is_target_reached(),
+		#nav_agent.is_target_reachable()
+	#]
 	if mark_enemy and (nav_agent.get_path_length() <= chasing_distance):
 		drone_speed = chasing_speed
 		#drone_dir = (target.global_position - global_position).normalized() #get the PV 
