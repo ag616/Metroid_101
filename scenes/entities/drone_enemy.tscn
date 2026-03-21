@@ -4,6 +4,42 @@
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_ydfy7"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_nj8q5"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4jqo"]
+atlas = ExtResource("1_ydfy7")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe6ef"]
+atlas = ExtResource("1_ydfy7")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb0a4"]
+atlas = ExtResource("1_ydfy7")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ujxx"]
+atlas = ExtResource("1_ydfy7")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hf2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4jqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe6ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb0a4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ujxx")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydfy7"]
 radius = 4.0
 
@@ -95,9 +131,12 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_pd3l4")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409094885]
-texture = ExtResource("1_ydfy7")
-hframes = 4
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1236852006]
+sprite_frames = SubResource("SpriteFrames_2hf2e")
+animation = &"Default"
+autoplay = "Default"
+frame = 3
+frame_progress = 0.47293088
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=905737107]
 position = Vector2(0, 1)

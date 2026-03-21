@@ -65,7 +65,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func animate_explosion():
-	$Sprite2D.visible = false 
+	$AnimatedSprite2D.visible = false 
 	#var explosion_scene_inst: = explosion_scene.instantiate() as Sprite2D
 	#explosion_scene_inst.setup($Sprite2D.position)
 	#$".".add_child(explosion_scene_inst)
