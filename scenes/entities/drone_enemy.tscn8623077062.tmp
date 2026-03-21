@@ -37,7 +37,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Default",
-"speed": 5.0
+"speed": 9.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydfy7"]
@@ -121,7 +121,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"explosion_animation",
-"speed": 12.0
+"speed": 8.0
 }]
 
 [node name="DroneEnemy" type="CharacterBody2D" unique_id=1867518062 groups=["Drones"]]
@@ -136,7 +136,7 @@ sprite_frames = SubResource("SpriteFrames_2hf2e")
 animation = &"Default"
 autoplay = "Default"
 frame = 3
-frame_progress = 0.3790922
+frame_progress = 0.47293088
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=905737107]
 position = Vector2(0, 1)
@@ -189,8 +189,6 @@ position = Vector2(25, -20)
 visible = false
 sprite_frames = SubResource("SpriteFrames_d4jqo")
 animation = &"explosion_animation"
-frame = 7
-frame_progress = 1.0
 
 [node name="DebugLabel" type="Label" parent="." unique_id=1117731317]
 offset_left = -18.0

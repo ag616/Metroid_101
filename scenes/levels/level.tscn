@@ -6546,6 +6546,21 @@ position = Vector2(108, -31)
 [node name="DroneEnemy2" parent="Entities" unique_id=1453859080 instance=ExtResource("5_d4w6o")]
 position = Vector2(148, 105)
 
+[node name="DroneEnemy3" parent="Entities" unique_id=486167538 instance=ExtResource("5_d4w6o")]
+position = Vector2(341, 19)
+
+[node name="Marker2D" parent="Entities/DroneEnemy3/PatrolMarkers" parent_id_path=PackedInt32Array(486167538, 116546613) index="0" unique_id=1872639855]
+position = Vector2(-33, -20)
+
+[node name="Marker2D2" parent="Entities/DroneEnemy3/PatrolMarkers" parent_id_path=PackedInt32Array(486167538, 116546613) index="1" unique_id=1420241953]
+position = Vector2(21, 19)
+
+[node name="Marker2D3" parent="Entities/DroneEnemy3/PatrolMarkers" parent_id_path=PackedInt32Array(486167538, 116546613) index="2" unique_id=683115529]
+position = Vector2(-24, 7)
+
+[node name="Marker2D4" parent="Entities/DroneEnemy3/PatrolMarkers" parent_id_path=PackedInt32Array(486167538, 116546613) index="3" unique_id=1563911805]
+position = Vector2(35, -7)
+
 [node name="Bullets" type="Node2D" parent="." unique_id=39748964]
 
 [node name="PowerUpTimer" type="Timer" parent="." unique_id=709359784]
@@ -6560,3 +6575,5 @@ navigation_polygon = SubResource("NavigationPolygon_d4w6o")
 
 [connection signal="body_entered" from="Entities/PowerUp" to="." method="_on_power_up_body_entered"]
 [connection signal="shoot_signal" from="Entities/Player" to="." method="_on_player_shoot_signal"]
+
+[editable path="Entities/DroneEnemy3"]

@@ -9,6 +9,7 @@ var idle_speed: int = 25 #speed of drone while idling
 var drone_speed: int = 0 #speed of the drone
 var explosion_scene: PackedScene = preload("res://scenes/entities/explosion.tscn")
 var hit_points: int = 3 #this is the hp of the drone
+var drone_groups: Array[Node] #Define an array to store all the drones
 
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -17,6 +18,9 @@ func _ready() -> void:
 	for marker in $PatrolMarkers.get_children():
 		if marker is Marker2D:
 			patrol_positions.append(marker.global_position) #update marker positions
+	
+	drone_groups = get_tree().get_nodes_in_group("Drones") # get all info of drones in that group
+	#print(drone_groups[0])
 	
 
 func update_marker_positions():
@@ -46,6 +50,7 @@ func _physics_process(_delta: float) -> void:
 		#nav_agent.is_target_reachable()
 	#]
 	if hit_points <=0:
+		check_nearby_drones()
 		animate_explosion()
 	if mark_enemy and (nav_agent.get_path_length() <= chasing_distance):
 		drone_speed = chasing_speed
@@ -57,7 +62,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if target!=null:
 		if (position-target.position).length() <= 15.0:
-			print("going to collide")
+			check_nearby_drones()
 			animate_explosion()
 			#Need to display explosion animation
 		
@@ -90,3 +95,9 @@ func idle_patrol():
 
 func _on_animated_explosion_animation_finished() -> void:
 	queue_free()
+
+func check_nearby_drones():
+	for drone_i in drone_groups:
+			if drone_i:
+				if (position - drone_i.position).length() <= 30.0:
+					drone_i.animate_explosion()
