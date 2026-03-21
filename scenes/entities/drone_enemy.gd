@@ -46,7 +46,6 @@ func _physics_process(_delta: float) -> void:
 		#nav_agent.is_target_reachable()
 	#]
 	if hit_points <=0:
-		print("drone gonna die")
 		animate_explosion()
 	if mark_enemy and (nav_agent.get_path_length() <= chasing_distance):
 		drone_speed = chasing_speed
