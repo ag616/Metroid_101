@@ -26,13 +26,13 @@ func update_marker_positions():
 		i += 1
 	
 
-func _on_agro_range_body_entered(body: Node2D) -> void:
+func _on_agro_range_body_entered(body: CharacterBody2D) -> void:
 	drone_speed = chasing_speed
 	mark_enemy = true
 	target = body #update the reference object - this stores the player node
 	nav_agent.target_position = target.global_position
 
-func _on_agro_range_body_exited(_body: Node2D) -> void:
+func _on_agro_range_body_exited(_body: CharacterBody2D) -> void:
 	drone_speed = idle_speed
 	mark_enemy = false
 	nav_agent.target_position = patrol_positions.pick_random()
