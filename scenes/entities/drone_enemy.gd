@@ -50,8 +50,7 @@ func _physics_process(_delta: float) -> void:
 		#nav_agent.is_target_reachable()
 	#]
 	if hit_points <=0:
-		check_nearby_drones()
-		animate_explosion()
+		explode()
 	if mark_enemy and (nav_agent.get_path_length() <= chasing_distance):
 		drone_speed = chasing_speed
 		#drone_dir = (target.global_position - global_position).normalized() #get the PV 
@@ -62,20 +61,22 @@ func _physics_process(_delta: float) -> void:
 	
 	if target!=null:
 		if (position-target.position).length() <= 15.0:
-			animate_explosion()
+			explode()
 			#Need to display explosion animation
 		
 	velocity = drone_dir*drone_speed
 	move_and_slide()
 
-func animate_explosion():
+func explode():
 	$AnimatedSprite2D.visible = false 
 	#var explosion_scene_inst: = explosion_scene.instantiate() as Sprite2D
 	#explosion_scene_inst.setup($Sprite2D.position)
 	#$".".add_child(explosion_scene_inst)
 	#queue_free()
-	$animated_explosion.visible = true
-	$animated_explosion.play("explosion_animation")
+	$explosion_sprite.show()
+	$explosion_animation.play("explode")
+	await $explosion_animation.animation_finished
+	queue_free()
 	#var tween = get_tree().create_tween()
 	#tween.tween_property(explosion_scene_inst,"frame",7,5).from(0)
 
@@ -90,13 +91,9 @@ func idle_patrol():
 	var patrol_point:Vector2 = patrol_positions.pick_random()
 	if !mark_enemy and nav_agent.is_navigation_finished():
 		nav_agent.target_position = patrol_point
-
-
-func _on_animated_explosion_animation_finished() -> void:
-	queue_free()
-
-func check_nearby_drones():
+		
+func chain_reaction():
 	for drone_i in drone_groups:
 			if drone_i:
-				if (position - drone_i.position).length() <= 30.0:
-					drone_i.animate_explosion()
+				if (position - drone_i.position).length() <= 40.0:
+					drone_i.explode()
