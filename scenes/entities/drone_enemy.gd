@@ -8,6 +8,7 @@ var chasing_distance: float = 200 #this is the chasing distance
 var idle_speed: int = 25 #speed of drone while idling
 var drone_speed: int = 0 #speed of the drone
 var explosion_scene: PackedScene = preload("res://scenes/entities/explosion.tscn")
+var hit_points: int = 3 #this is the hp of the drone
 
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -44,6 +45,9 @@ func _physics_process(_delta: float) -> void:
 		#nav_agent.is_target_reached(),
 		#nav_agent.is_target_reachable()
 	#]
+	if hit_points <=0:
+		print("drone gonna die")
+		animate_explosion()
 	if mark_enemy and (nav_agent.get_path_length() <= chasing_distance):
 		drone_speed = chasing_speed
 		#drone_dir = (target.global_position - global_position).normalized() #get the PV 
