@@ -62,7 +62,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if target!=null:
 		if (position-target.position).length() <= 15.0:
-			check_nearby_drones()
 			animate_explosion()
 			#Need to display explosion animation
 		
