@@ -15,3 +15,7 @@ func bullet_setup(pos: Vector2, dir: Vector2):
 func _process(delta: float) -> void:
 	position+=150*fire_direction*delta
 	
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		print("detected drone")
