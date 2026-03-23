@@ -6573,6 +6573,10 @@ one_shot = true
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_d4w6o")
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1992580492]
+color = Color(0.446777, 0.44677705, 0.44677705, 1)
+blend_mode = 2
+
 [connection signal="body_entered" from="Entities/PowerUp" to="." method="_on_power_up_body_entered"]
 [connection signal="shoot_signal" from="Entities/Player" to="." method="_on_player_shoot_signal"]
 
