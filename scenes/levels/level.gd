@@ -5,6 +5,7 @@ var power_up: PackedScene = preload("res://scenes/entities/power_up.tscn") #sele
 
 func _ready() -> void:
 	$Entities/PowerUp.position = Vector2(1000,-20)
+	flicker_lights()
 
 func _physics_process(_delta: float) -> void:
 	if !$PowerUpTimer.time_left:
@@ -34,4 +35,14 @@ func buff_player():
 func _on_power_up_body_entered(_body: Node2D) -> void:
 	buff_player()
 	$Entities/PowerUp.queue_free()
+	
+func flicker_lights():
+	var light_tween = get_tree().create_tween()
+	light_tween.set_loops()
+	light_tween.tween_property($Lights/Signlight1,"energy",1.5,0.3)
+	light_tween.tween_property($Lights/Signlight1,"energy",0.9,0.3)
+	var light_tween2 = get_tree().create_tween()
+	light_tween2.set_loops()
+	light_tween2.tween_property($Lights/Signlight3,"energy",1.5,0.3)
+	light_tween2.tween_property($Lights/Signlight3,"energy",0.9,0.3)
 	

@@ -21,6 +21,7 @@ func _ready() -> void:
 	
 	drone_groups = get_tree().get_nodes_in_group("Drones") # get all info of drones in that group
 	#print(drone_groups[0])
+
 	
 
 func update_marker_positions():
@@ -97,3 +98,4 @@ func chain_reaction():
 			if drone_i:
 				if (position - drone_i.position).length() <= 40.0:
 					drone_i.explode()
+	

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bhxsatxh8x382" path="res://scenes/entities/drone_enemy.gd" id="1_pd3l4"]
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_ydfy7"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_nj8q5"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="4_siyni"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4jqo"]
 atlas = ExtResource("1_ydfy7")
@@ -106,6 +107,44 @@ _data = {
 &"explode": SubResource("Animation_siyni")
 }
 
+[sub_resource type="Animation" id="Animation_g80xw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DroneEyeLight:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2xv5n"]
+resource_name = "eye_animation"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DroneEyeLight:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.8, 0.6, 0.4, 0.2, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pyjj0"]
+_data = {
+&"RESET": SubResource("Animation_g80xw"),
+&"eye_animation": SubResource("Animation_2xv5n")
+}
+
 [node name="DroneEnemy" type="CharacterBody2D" unique_id=1867518062 groups=["Drones"]]
 collision_layer = 4
 collision_mask = 11
@@ -180,6 +219,17 @@ libraries/ = SubResource("AnimationLibrary_g80xw")
 visible = false
 texture = ExtResource("3_nj8q5")
 hframes = 8
+
+[node name="DroneEyeLight" type="PointLight2D" parent="." unique_id=2004675218]
+position = Vector2(-2.000001, 2.0000005)
+scale = Vector2(0.022812502, 0.020833364)
+color = Color(1, 0.27224624, 0.22870305, 1)
+blend_mode = 2
+texture = ExtResource("4_siyni")
+
+[node name="DroneEyeLightAnimation" type="AnimationPlayer" parent="." unique_id=404969482]
+libraries/ = SubResource("AnimationLibrary_pyjj0")
+autoplay = &"eye_animation"
 
 [connection signal="body_entered" from="AgroRange" to="." method="_on_agro_range_body_entered"]
 [connection signal="body_exited" from="AgroRange" to="." method="_on_agro_range_body_exited"]
