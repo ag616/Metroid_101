@@ -8,6 +8,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2xv5n"]
 shader = ExtResource("2_g80xw")
+shader_parameter/ColorParameter = Color(1, 0.662745, 0.058824, 1)
+shader_parameter/FloatParameter = 0.2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4jqo"]
 atlas = ExtResource("1_ydfy7")
@@ -165,22 +167,27 @@ frame = 3
 frame_progress = 0.3790922
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=905737107]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_ydfy7")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=874779592]
+visible = false
 position = Vector2(-3, -2)
 shape = SubResource("CircleShape2D_pd3l4")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1243746565]
+visible = false
 position = Vector2(3, -2)
 shape = SubResource("CircleShape2D_nj8q5")
 
 [node name="AgroRange" type="Area2D" parent="." unique_id=1511262569]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRange" unique_id=1872890391]
+visible = false
 shape = SubResource("RectangleShape2D_pd3l4")
 
 [node name="NavRefreshTimer" type="Timer" parent="." unique_id=801071593]
@@ -191,18 +198,23 @@ autostart = true
 debug_enabled = true
 
 [node name="IdlePatrolRange" type="Area2D" parent="." unique_id=1831328836]
+visible = false
 collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IdlePatrolRange" unique_id=366893195]
+visible = false
 shape = SubResource("CircleShape2D_siyni")
 
 [node name="PatrolMarkers" type="Node2D" parent="." unique_id=116546613]
+visible = false
 
 [node name="Marker2D" type="Marker2D" parent="PatrolMarkers" unique_id=1872639855]
+visible = false
 position = Vector2(-25, -24)
 
 [node name="Marker2D2" type="Marker2D" parent="PatrolMarkers" unique_id=1420241953]
+visible = false
 position = Vector2(30, 11)
 
 [node name="Marker2D3" type="Marker2D" parent="PatrolMarkers" unique_id=683115529]
@@ -212,6 +224,7 @@ position = Vector2(-12, 20)
 position = Vector2(25, -20)
 
 [node name="DebugLabel" type="Label" parent="." unique_id=1117731317]
+visible = false
 offset_left = -18.0
 offset_top = -31.0
 offset_right = 22.0
@@ -226,6 +239,7 @@ texture = ExtResource("3_nj8q5")
 hframes = 8
 
 [node name="DroneEyeLight" type="PointLight2D" parent="." unique_id=2004675218]
+visible = false
 position = Vector2(-2.000001, 2.0000005)
 scale = Vector2(0.022812502, 0.020833364)
 color = Color(1, 0.27224624, 0.22870305, 1)
