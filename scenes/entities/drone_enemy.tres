@@ -17,7 +17,7 @@ constant = Color(1, 0, 0, 1)
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_jl628"]
 parameter_name = "Color"
 default_value_enabled = true
-default_value = Color(1, 0.6627451, 0.05882353, 1)
+default_value = Color(1, 0.19215687, 0.05882353, 1)
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_1ahxq"]
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
