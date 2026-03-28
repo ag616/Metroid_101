@@ -21,7 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.hit_points -=1
 		var drone_sprite = body.get_node("AnimatedSprite2D")
 		var hit_tween = get_tree().create_tween()
-		hit_tween.set_loops(1)
+		#hit_tween.set_loops(1)
 		hit_tween.tween_property(drone_sprite.material,"shader_parameter/Progress",0,0.1)
 		hit_tween.tween_property(drone_sprite.material,"shader_parameter/Progress",1,0.2)
 		#drone_sprite.material.set_shader_parameter('Progress',0.0)

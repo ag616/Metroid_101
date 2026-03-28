@@ -167,22 +167,18 @@ frame = 3
 frame_progress = 0.3790922
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=905737107]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_ydfy7")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=874779592]
-visible = false
 position = Vector2(-3, -2)
 shape = SubResource("CircleShape2D_pd3l4")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1243746565]
-visible = false
 position = Vector2(3, -2)
 shape = SubResource("CircleShape2D_nj8q5")
 
 [node name="AgroRange" type="Area2D" parent="." unique_id=1511262569]
-visible = false
 collision_layer = 0
 collision_mask = 2
 

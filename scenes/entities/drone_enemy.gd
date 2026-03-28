@@ -70,6 +70,9 @@ func _physics_process(_delta: float) -> void:
 
 func explode():
 	$AnimatedSprite2D.visible = false 
+	$CollisionShape2D.disabled = true #remove the collision shape
+	$CollisionShape2D2.disabled = true #remove the collision shapes
+	$CollisionShape2D3.disabled = true #remove the collision shapes
 	#var explosion_scene_inst: = explosion_scene.instantiate() as Sprite2D
 	#explosion_scene_inst.setup($Sprite2D.position)
 	#$".".add_child(explosion_scene_inst)
