@@ -6582,6 +6582,12 @@ position = Vector2(1056, 135)
 [node name="DroneEnemy7" parent="Entities" unique_id=135236349 instance=ExtResource("5_d4w6o")]
 position = Vector2(432, 123)
 
+[node name="DroneEnemy8" parent="Entities" unique_id=56032886 instance=ExtResource("5_d4w6o")]
+position = Vector2(382, 292)
+
+[node name="DroneEnemy9" parent="Entities" unique_id=1026140404 instance=ExtResource("5_d4w6o")]
+position = Vector2(583, 278)
+
 [node name="Bullets" type="Node2D" parent="." unique_id=39748964]
 
 [node name="PowerUpTimer" type="Timer" parent="." unique_id=709359784]
