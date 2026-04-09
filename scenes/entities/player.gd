@@ -27,6 +27,7 @@ func get_input(): #easier way to get inputs
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y=-jump_strength*Input.get_action_raw_strength("jump")
 	if Input.is_action_pressed("shoot") and $ReloadTimer.time_left==0:
+		$AudioStreamPlayer2D.play()
 		shoot_signal.emit(position,get_local_mouse_position().normalized())
 		$ReloadTimer.start()
 	if Input.is_action_pressed("crouch") and is_on_floor():
@@ -131,5 +132,5 @@ func animate_player():
 func update_marker():
 	$Marker.position = get_local_mouse_position()
 		
-	
+
 	

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="2_08t41"]
 [ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="3_1ie0h"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="4_42nxq"]
+[ext_resource type="AudioStream" uid="uid://tkjj51je3two" path="res://audio/laser.wav" id="5_5u6hq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qees"]
 radius = 6.0
@@ -178,3 +179,6 @@ target_position = Vector2(0, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1254393620]
 texture = ExtResource("4_42nxq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1201884015]
+stream = ExtResource("5_5u6hq")

@@ -25,6 +25,5 @@ func _on_body_entered(body: Node2D) -> void:
 		hit_tween.tween_property(drone_sprite.material,"shader_parameter/Progress",0,0.1)
 		hit_tween.tween_property(drone_sprite.material,"shader_parameter/Progress",1,0.2)
 		#drone_sprite.material.set_shader_parameter('Progress',0.0)
-		
 	queue_free()
 		

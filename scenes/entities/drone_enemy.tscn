@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://ces2xycagftw6" path="res://scenes/entities/drone_enemy.tres" id="2_g80xw"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_nj8q5"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="4_siyni"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_2xv5n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2xv5n"]
 shader = ExtResource("2_g80xw")
@@ -104,6 +105,20 @@ tracks/1/keys = {
 "values": [{
 "args": [],
 "method": &"chain_reaction"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explosion_sound"
 }]
 }
 
@@ -234,6 +249,9 @@ texture = ExtResource("4_siyni")
 [node name="DroneEyeLightAnimation" type="AnimationPlayer" parent="." unique_id=404969482]
 libraries/ = SubResource("AnimationLibrary_pyjj0")
 autoplay = &"eye_animation"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1320056419]
+stream = ExtResource("6_2xv5n")
 
 [connection signal="body_entered" from="AgroRange" to="." method="_on_agro_range_body_entered"]
 [connection signal="body_exited" from="AgroRange" to="." method="_on_agro_range_body_exited"]

@@ -101,4 +101,6 @@ func chain_reaction():
 			if drone_i:
 				if (position - drone_i.position).length() <= 40.0:
 					drone_i.explode()
-	
+
+func explosion_sound():
+	$AudioStreamPlayer2D.play()
