@@ -21,6 +21,7 @@ func _ready() -> void:
 	
 	drone_groups = get_tree().get_nodes_in_group("Drones") # get all info of drones in that group
 	#print(drone_groups[0])
+	#Create a new material to overcome the shader sharing issue
 	var old_mat = $AnimatedSprite2D.material
 	var new_mat = ShaderMaterial.new()
 	new_mat.shader = old_mat.shader
@@ -113,11 +114,10 @@ func explosion_sound():
 
 func flash_hit():
 	var hit_tween = get_tree().create_tween()
-		#hit_tween.set_loops(1)
+	#hit_tween.set_loops(1)
 	hit_tween.tween_property($AnimatedSprite2D.material,"shader_parameter/Progress",0,0.1)
 	hit_tween.tween_property($AnimatedSprite2D.material,"shader_parameter/Progress",1,0.2)
-	#drone_sprite.material.set_shader_parameter("Progress", 0.0)
+	#$AnimatedSprite2D.material.set_shader_parameter("Progress", 0.0)
 	#await get_tree().create_timer(0.1).timeout
-	#drone_sprite.material.set_shader_parameter("Progress", 1.0)
-	#drone_sprite.material.set_shader_parameter('Progress',0.0)
+	#$AnimatedSprite2D.material.set_shader_parameter("Progress", 1.0)
 	
